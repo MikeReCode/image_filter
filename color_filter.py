@@ -12,14 +12,13 @@ from PIL import ImageFont
 image = Image.open("images.png")
 image = image.convert('RGB')
 largo, alto = image.size
-print(alto, largo)
 # build a list of 9 images which have different brightnesses
 enhancer = ImageDraw.Draw(image)
 images = []
 
 
 # font = ImageFont.truetype("readonly/fanwood-webfont.ttf", 70)
-def color_change(img, mr=1, mg=1, mb=1):
+def color_change(img, mr=1.0, mg=1.0, mb=1.0):
     ancho, alto = img.size
     img = img.copy()
     for px in range(ancho):
@@ -81,5 +80,7 @@ for img in images:
 
 # resize and display the contact sheet
 contact_sheet = contact_sheet.resize((int(contact_sheet.width / 2), int(contact_sheet.height / 2)))
-# display(contact_sheet)
+
+# To save the image , uncomment the next line and modify the output image name if you wish
+# contact_sheet.save("output.png")
 contact_sheet.show()
